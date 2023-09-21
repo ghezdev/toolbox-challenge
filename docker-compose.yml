@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  frontend:
+    container_name: frontend
+    restart: unless-stopped
+    image: frontend:1.0.0
+    build:
+      context: ./toolbox-fe
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - shared-network
+    depends_on:
+      - backend
+
+  backend:
+    container_name: backend
+    restart: unless-stopped
+    image: backend:1.0.0
+    environment:
+      - API_KEY=Bearer aSuperSecretKey
+    build:
+      context: ./toolbox-be
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - shared-network
+
+networks:
+  shared-network:

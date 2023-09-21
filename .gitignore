@@ -1,0 +1,14 @@
+**/dist
+**/dist-ssr
+**/*.local
+
+**/.vscode/*
+
+**/node_modules
+
+**/.DS_Store
+
+**/.env
+
+**/build
+**/npm-debug.log*
